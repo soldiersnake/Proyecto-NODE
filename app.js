@@ -4,10 +4,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const heroes = require('./routes/heroes');
 const personasRouter = require('./routes/personas');
 const loginRouter = require('./routes/login');
 const filesRouter = require('./routes/files');
@@ -29,6 +33,7 @@ app.use('/users', usersRouter);
 app.use('/personas', personasRouter);
 app.use('/login', loginRouter);
 app.use('/files', filesRouter);
+app.use('/heroes', heroes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
